@@ -1,16 +1,16 @@
 ﻿using System;
 using EcsRx.Components;
 //using UniRx;
-///using UnityEngine
+using UnityEngine.InputSystem;
 
 namespace Game.Components {
-    public class PlayerControlledComponent : IComponent, IDisposable {
+    public class PlayerControlledComponent : IComponent {
+        public InputActionReference InputActionReference;
+
         public PlayerControlledComponent() {
-
+            
         }
-        public void Dispose() {
-
-        }
+        
         
     }
 
