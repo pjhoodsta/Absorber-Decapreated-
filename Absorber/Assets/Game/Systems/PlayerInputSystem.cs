@@ -19,14 +19,14 @@ using UniRx;
 using UnityEngine;
 ///using Game.Events;
 //using Game.Events;
-using UnityEngine;
 
 
 
 namespace Game.Systems {
-    [Priority(1)]
+    [Priority(2)]
     public class PlayerInputSystem : IReactToGroupSystem
     {
+        
         private readonly IEventSystem _eventSystem;
 
         private IDisposable _updateSubscription;
@@ -46,10 +46,9 @@ namespace Game.Systems {
         }
         public void Process(IEntity entity)
         {
-
             var inputComponent = entity.GetComponent<StandardInputComponent>();
-            UnityInputWrapper input = inputComponent.UnityInputWrapper;
-            if (input.VelocityByMovement == Vector2.zero) return;
+            //UnityInputWrapper input = inputComponent.UnityInputWrapper;
+            if (inputComponent.VelocityByMovement == Vector2.zero) return;
             Debug.Log("getting input");
         }
 

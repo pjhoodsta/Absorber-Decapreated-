@@ -9,7 +9,9 @@ namespace Game.Installers {
 
     public class CustomInputModule : IDependencyModule {
         public void Setup(IDependencyContainer container) {
-            container.Bind<UnityInputWrapper>(new BindingConfiguration { AsSingleton = true});
+            //container.Bind<UnityInputWrapper>(new BindingConfiguration { AsSingleton = true});
+            //container.Bind<>
+            
         }
     }
 

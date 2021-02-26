@@ -19,19 +19,18 @@ namespace Game {
         private IEntityCollection defaultCollection;
 
         [Inject]
-        private UnityInputWrapper _unityInputWrapper;
+        private readonly UnityInputHandler _unityInputHandler;
+
         protected override void LoadModules() {
          
             base.LoadModules();
             Container.LoadModule<CustomInputModule>();
-            //Container.BindInstance(foo);
-
         }
        
 
         protected override void ApplicationStarted() {
             defaultCollection = EntityDatabase.GetCollection();
-            var player = defaultCollection.CreateEntity(new PlayerBlueprint(_unityInputWrapper));
+            var player = defaultCollection.CreateEntity(new PlayerBlueprint(_unityInputHandler));
 
 
         }
