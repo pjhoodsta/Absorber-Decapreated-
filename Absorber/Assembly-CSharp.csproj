@@ -177,13 +177,33 @@
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Systems\CameraFollowSystem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Event__Event-Event.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Component__ComponentIDisposable-Component.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__System__SetupSystem-System.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Module__Module-Module.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Event__EventEntity-Event.cs.txt" />
     <None Include="Assets\EcsRx\EcsRx.Plugins.Batching.dll" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__ViewResolver__DynamicViewResolver-ViewResolver.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__System__EventSystem-System.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__ViewResolver__PrefabViewResolver-ViewResolver.cs.txt" />
+    <None Include="Assets\ScriptTemplates\81-CustomC#__BareBone-class.cs.txt" />
     <None Include="Assets\EcsRx\EcsRx.Plugins.Views.dll" />
     <None Include="Assets\EcsRx\EcsRx.Infrastructure.dll" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Blueprint-Blueprint.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Enum-Enum.cs.txt" />
+    <None Include="Assets\ScriptTemplates\81-CustomC#__DataContainer-class.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__System__ManualSystem-System.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__System__ReactToGroupSystem-System.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Module__ModuleComputed-Module.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Configuration-Configuration.cs.txt" />
     <None Include="Assets\EcsRx\EcsRx.dll" />
     <None Include="Assets\EcsRx\EcsRx.Plugins.Computeds.dll" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__System__ReactToEntitySystem-System.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Extention-Extention.cs.txt" />
     <None Include="Assets\EcsRx\EcsRx.MicroRx.dll" />
     <None Include="Assets\EcsRx\EcsRx.Plugins.ReactiveSystems.dll" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Component__Component-Component.cs.txt" />
+    <None Include="Assets\ScriptTemplates\80-EcsRx__Group-Group.cs.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\2020.2.5f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

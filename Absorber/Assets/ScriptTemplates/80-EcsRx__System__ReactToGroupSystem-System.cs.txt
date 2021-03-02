@@ -1,0 +1,28 @@
+using System;
+using EcsRx.Entities;
+using EcsRx.Extensions;
+using EcsRx.Groups;
+using EcsRx.Groups.Observable;
+using EcsRx.Plugins.ReactiveSystems.Systems;
+using EcsRx.Systems;
+using Game.Components;
+using UniRx;
+using UnityEngine;
+
+namespace Game.Systems
+{
+    public class #SCRIPTNAME# : IReactToGroupSystem
+    {
+        public IGroup Group { get; } = new Group(typeof(SomeClassFirst), typeof(SomeClassSecond));
+
+        public IObservable<IObservableGroup> ReactToGroup(IObservableGroup group)
+        {
+            //return Observable.EveryUpdate().Select(x => group);
+        }
+
+        public void Process(IEntity entity)
+        {
+           #NOTRIM#
+        }
+    }
+}

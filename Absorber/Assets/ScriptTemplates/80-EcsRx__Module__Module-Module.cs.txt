@@ -1,0 +1,16 @@
+using EcsRx.Infrastructure.Dependencies;
+using EcsRx.Infrastructure.Extensions;
+using Game.SceneCollections;
+using Zenject;
+
+
+namespace Game.Installers
+{
+    public class #SCRIPTNAME#: IDependencyModule
+    {
+        public void Setup(IDependencyContainer container)
+        {
+             //container.Bind<ClassName>(new BindingConfiguration{AsSingleton = true});
+        }
+    }
+}

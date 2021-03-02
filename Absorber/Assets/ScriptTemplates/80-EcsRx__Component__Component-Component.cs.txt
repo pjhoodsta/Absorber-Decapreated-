@@ -1,0 +1,15 @@
+using System;
+using EcsRx.Components;
+using UniRx;
+
+namespace Game.Components
+{
+    public class #SCRIPTNAME# : IComponent
+    {
+        #NOTRIM#
+        public #SCRIPTNAME# ()
+        {
+            #NOTRIM#
+        }
+    }
+}

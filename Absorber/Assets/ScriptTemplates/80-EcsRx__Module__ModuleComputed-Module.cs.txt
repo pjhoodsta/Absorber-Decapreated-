@@ -1,0 +1,23 @@
+using EcsRx.Infrastructure.Dependencies;
+using EcsRx.Infrastructure.Extensions;
+using Game.Components;
+using Game.Computeds;
+
+
+namespace Game.Installers
+{
+    public class #SCRIPTNAME# : IDependencyModule
+    {
+        public void Setup(IDependencyContainer container)
+        {
+            container.Bind<IComputedClass>(c =>
+            {
+                c.ToMethod(x =>
+                {
+                    var observableGroup = x.ResolveObservableGroup(typeof(SomeComponent));
+                    return new IComputedClass(observableGroup);
+                });
+            });
+        }
+    }
+}

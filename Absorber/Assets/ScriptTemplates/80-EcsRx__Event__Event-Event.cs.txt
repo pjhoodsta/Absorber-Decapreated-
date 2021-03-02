@@ -1,0 +1,13 @@
+sing EcsRx.Entities;
+
+namespace Game.Events
+{
+    public class #SCRIPTNAME#
+    {
+        #NOTRIM#
+        public #SCRIPTNAME#()
+        {
+            #NOTRIM#
+        }
+    }
+}

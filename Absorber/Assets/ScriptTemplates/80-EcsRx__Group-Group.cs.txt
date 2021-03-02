@@ -1,0 +1,13 @@
+using System;
+using EcsRx.Groups;
+using EcsRx.Plugins.Views.Components;
+using Game.Components;
+
+namespace Game.Groups
+{
+    public class #SCRIPTNAME# : IGroup
+    {
+        public Type[] RequiredComponents { get; } = { typeof(ViewComponent), typeof(SomeClass) };
+        public Type[] ExcludedComponents { get; } = new Type[0];
+    }
+}

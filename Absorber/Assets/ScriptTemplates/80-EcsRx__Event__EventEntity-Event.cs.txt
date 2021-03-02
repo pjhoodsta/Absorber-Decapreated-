@@ -1,0 +1,14 @@
+sing EcsRx.Entities;
+
+namespace Game.Events
+{
+    public class #SCRIPTNAME#
+    {
+        public IEntity SomeEntity { get; private set; }
+
+        public #SCRIPTNAME#(IEntity someEntity)
+        {
+            SomeEntity = someEntity ;
+        }
+    }
+}

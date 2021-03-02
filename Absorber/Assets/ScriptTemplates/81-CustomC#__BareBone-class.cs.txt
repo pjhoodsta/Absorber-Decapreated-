@@ -1,0 +1,11 @@
+namespace Game.SomeModule
+{
+    public class #SCRIPTNAME#
+    {
+        #NOTRIM#
+        public #SCRIPTNAME#()
+        {
+            #NOTRIM#
+        }
+    }
+}

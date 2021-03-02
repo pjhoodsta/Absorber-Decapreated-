@@ -1,0 +1,20 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Game.SomeModule
+{
+    public class #SCRIPTNAME#
+    {
+	//replace AvailableDatas with own name like AvailableTiles!
+        public IEnumerable<UnityRelated> AvailableDatas { get; private set; }
+
+        public #SCRIPTNAME#()
+        {
+            AvailableDatas = new[]
+            {
+                //Resources.Load<AudioClip>("Audio/scavengers_soda1")
+		//, repeat if you want
+            };
+        }
+    }
+}

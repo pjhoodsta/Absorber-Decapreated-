@@ -1,0 +1,7 @@
+namespace Game.Enums
+{
+    public enum #SCRIPTNAME#
+    {
+	#NOTRIM#
+    }
+}

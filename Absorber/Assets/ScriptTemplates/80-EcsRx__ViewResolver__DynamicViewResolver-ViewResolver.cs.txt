@@ -1,0 +1,44 @@
+using System.Linq;
+using EcsRx.Attributes;
+using EcsRx.Collections;
+using EcsRx.Collections.Database;
+using EcsRx.Entities;
+using EcsRx.Events;
+using EcsRx.Extensions;
+using EcsRx.Groups;
+using EcsRx.Unity.Dependencies;
+using EcsRx.Unity.Systems;
+using EcsRx.Plugins.Views.Components;
+using Game.Components;
+using Game.SceneCollections;
+using UnityEngine;
+using Zenject;
+
+namespace Game.ViewResolvers
+{
+    [Priority(100)]
+    public class #SCRIPTNAME# : DynamicViewResolverSystem
+    {
+        public override IGroup Group { get; } = new Group(typeof(SomeComponent), typeof(ViewComponent));
+       
+        public EnemyViewResolver(IEventSystem eventSystem, IEntityDatabase entityDatabase, IUnityInstantiator instantiator)
+            : base(eventSystem, entityDatabase, instantiator)
+        {
+            #NOTRIM#
+        }
+        #NOTRIM#
+        public override GameObject CreateView(IEntity entity)
+        {
+            var someComponent = entity.GetComponent<SomeComponent>();
+	    //
+            //custom data field related
+	    //
+            var gameObject = Object.Instantiate(SomeGameObjectPrefab, Vector3.zero, Quaternion.identity);
+            gameObject.name = $"Something-{entity.Id}";
+            return gameObject;
+        }
+
+        public override void DestroyView(IEntity entity, GameObject view)
+        { GameObject.Destroy(view); }
+    }
+}

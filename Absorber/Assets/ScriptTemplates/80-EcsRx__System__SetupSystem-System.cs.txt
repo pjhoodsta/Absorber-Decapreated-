@@ -1,0 +1,26 @@
+using EcsRx.Attributes;
+using EcsRx.Entities;
+using EcsRx.Extensions;
+using EcsRx.Groups;
+using EcsRx.Plugins.ReactiveSystems.Systems;
+using EcsRx.Systems;
+using Game.Components;
+using Game.Groups;
+
+namespace Game.Systems
+{
+    //[Priority(10)]
+    public class #SCRIPTNAME# : ISetupSystem
+    {
+        //public IGroup Group { get; } = new SomeGroup();
+	#NOTRIM#
+	//public IEntityDatabase EntityDatabase { get; }
+	public #SCRIPTNAME#(IEntityDatabase entityDatabase)
+        { EntityDatabase = entityDatabase; }
+	#NOTRIM#
+        public void Setup(IEntity entity)
+        {
+            #NOTRIM#
+        }
+    }
+}

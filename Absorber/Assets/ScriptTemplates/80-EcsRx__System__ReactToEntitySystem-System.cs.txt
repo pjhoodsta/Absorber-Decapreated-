@@ -1,0 +1,52 @@
+using System;
+using System.Collections;
+using EcsRx.Entities;
+using EcsRx.Events;
+using EcsRx.Extensions;
+using EcsRx.Groups;
+using EcsRx.Systems;
+using EcsRx.Unity.Extensions;
+using EcsRx.Unity.MonoBehaviours;
+using EcsRx.Plugins.Views.Components;
+using Game.Components;
+using Game.Configuration;
+using Game.Events;
+using UniRx;
+using UnityEngine;
+using EcsRx.Plugins.ReactiveSystems.Systems;
+
+namespace Game.Systems
+{
+    public class #SCRIPTNAME# : IReactToEntitySystem
+    {
+	////Event + subscription
+        private readonly IEventSystem _eventSystem;
+	#NOTRIM#
+        public IGroup Group { get; } = new Group(typeof(ViewComponent), typeof(SomeComponent)); 
+
+        public #SCRIPTNAME# (IEventSystem eventSystem)
+        {
+            _eventSystem = eventSystem;
+        }
+
+        public IObservable<IEntity> ReactToEntity(IEntity entity)
+        {
+            var someComponent = entity.GetComponent<SomeCompoment>();
+            return someComponent
+		//.Movement.DistinctUntilChanged().Where(x => x != Vector2.zero).Select(x => entity);
+        }
+
+        public void Process(IEntity entity)
+        {
+		#NOTRIM#
+	}
+            
+	//Event + subscription
+        private void SomePublish(IEntity SomeEntityFirst, IEntity someEntitySecond)
+        {
+            _eventSystem.Publish(new SomeEvent(SomeEntityFirst, someEntitySecond));
+        }
+
+       
+    }
+}
