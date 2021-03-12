@@ -27,6 +27,12 @@ namespace Game.Components
         {
             get { return _unityInputHandler.VelocityByMovement; }
         }
+        public int EntityState {
+            get { return _unityInputHandler.EntityState; }
+        }
+        public int MovementState {
+            get { return _unityInputHandler.MovementState; }
+        }
 
         public StandardInputComponent(UnityInputHandler unityInputHandler)
         {

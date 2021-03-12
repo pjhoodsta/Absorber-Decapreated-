@@ -8,9 +8,9 @@ namespace Game.Enums {
         public static int Jump = 2;
         public static int Grab = 3;
         public static int Defense = 4; 
-        public static int Special = 5; 
-        public static int PrimaryItem = 6;
-        public static int SecondaryItem = 7;
+        public static int PrimarySpecial = 5; 
+        public static int SecondarySpecial = 6;
+        public static int TertiarySpecial = 7;
         public static int Movement = 8;
         public static int Start = 9;
         public static int Selection = 10;

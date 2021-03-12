@@ -2,15 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
+using Game.CharacterStates;
 using Game.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using EcsRx.Unity.MonoBehaviours;
 using Zenject;
 //I hope I can refactor DRY section later!
 
 namespace Game.CustomInput {
-    public class UnityInputHandler : MonoBehaviour, PlayerUnityInputAsset.IPlayer0GameplayActions{
+    public class UnityInputHandler : MonoBehaviour, PlayerUnityInputAsset.IPlayer0GameplayActions {
         private PlayerUnityInputAsset _playerUnityInputAsset;
         private InputAction _movement;
         private InputAction _primaryAttack;
@@ -31,9 +33,16 @@ namespace Game.CustomInput {
 
             #region Movement
             _movement = _playerUnityInputAsset.Player0Gameplay.Movement;
-            _movement.started += OnMovementChanged;
-            _movement.performed += OnMovementChanged;
-            _movement.canceled += OnMovementChanged;
+            _movement.AddBinding("<Keyboard>/upArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
+            _movement.AddBinding("<Keyboard>/downArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
+            _movement.AddBinding("<Keyboard>/leftArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
+            _movement.AddBinding("<Keyboard>/rightArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
+            _movement.started += OnMovementStarted;
+            //_movement.started += context => {
+            //    if (context.interaction is MultiTapInteraction)
+            //};
+            _movement.performed += OnMovementPerformed;
+            _movement.canceled += OnMovementCanceled;
             #endregion
 
             #region PrimaryAttack
@@ -103,122 +112,145 @@ namespace Game.CustomInput {
 
         }
 
-        
+
         #region Movement
         private Vector2 _velocityByMovement;
         public Vector2 VelocityByMovement {
             get { return _velocityByMovement; }
         }
-
-        public void OnMovement(InputAction.CallbackContext context)
-        {
-            throw new System.NotImplementedException();
+        private int _movementState;
+        public int MovementState {
+            get { return _movementState; }
+        }
+        private int _entityState;
+        public int EntityState {
+            get { return _entityState; }
         }
 
-        private void OnMovementChanged(InputAction.CallbackContext context)
-        {
+
+        public void OnMovement(InputAction.CallbackContext context) {
+            //throw new System.NotImplementedException();
+        }
+        private void OnMovementStartedWalking(InputAction.CallbackContext context) {
+            if (_entityState == EntityStates.Idle) {
+                _movementState = MovementStates.Walk;
+                _entityState = EntityStates.Movement;
+            }
+               
+        }
+        private void OnMovementStartedRunning(InputAction.CallbackContext context) {
+            if (_entityState == EntityStates.Idle) {
+                _movementState = MovementStates.Run;
+                _entityState = EntityStates.Movement;
+            }
+        }
+        private void OnMovementStarted(InputAction.CallbackContext context) {
             _velocityByMovement = context.ReadValue<Vector2>();
+            if (context.interaction is PressInteraction) {
+                if (_entityState == EntityStates.Idle)
+                    _movementState = MovementStates.Walk;
+            }
+            else if (context.interaction is HoldInteraction) {
+                _movementState = MovementStates.Run;
+            }
+            if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
+        }
+        private void OnMovementPerformed(InputAction.CallbackContext context) {
+            _velocityByMovement = context.ReadValue<Vector2>();
+            if (context.interaction is PressInteraction) {
+                if (_entityState == EntityStates.Idle)
+                    _movementState = MovementStates.Walk;
+            } else if (context.interaction is HoldInteraction) {
+                _movementState = MovementStates.Run;
+            }
+            if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
+
+        }
+        private void OnMovementCanceled(InputAction.CallbackContext context) {
+            _velocityByMovement = context.ReadValue<Vector2>();
+            if (_entityState == EntityStates.Movement)
+                _entityState = EntityStates.Idle;
         }
         #endregion
 
         #region PrimaryAttack
-        public void OnPrimaryAttack(InputAction.CallbackContext context)
-        {
+        public void OnPrimaryAttack(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnPrimaryAttackChanged(InputAction.CallbackContext context)
-        {
+        private void OnPrimaryAttackChanged(InputAction.CallbackContext context) {
             //context.interaction.
         }
         #endregion
         #region SecondaryAttack
-        public void OnSecondaryAttack(InputAction.CallbackContext context)
-        {
+        public void OnSecondaryAttack(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnSecondaryAttackChanged(InputAction.CallbackContext context)
-        {
+        private void OnSecondaryAttackChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region Jump
-        public void OnJump(InputAction.CallbackContext context)
-        {
+        public void OnJump(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnJumpChanged(InputAction.CallbackContext context)
-        {
+        private void OnJumpChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region Grab
-        public void OnGrab(InputAction.CallbackContext context)
-        {
+        public void OnGrab(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnGrabChanged(InputAction.CallbackContext context)
-        {
+        private void OnGrabChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region Defense
-        public void OnDefense(InputAction.CallbackContext context)
-        {
+        public void OnDefense(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnDefenseChanged(InputAction.CallbackContext context)
-        {
+        private void OnDefenseChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region PrimarySpecial
-        public void OnPrimarySpecial(InputAction.CallbackContext context)
-        {
+        public void OnPrimarySpecial(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnPrimarySpecialChanged(InputAction.CallbackContext context)
-        {
+        private void OnPrimarySpecialChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region SecondarySpecial
-        public void OnSecondarySpecial(InputAction.CallbackContext context)
-        {
+        public void OnSecondarySpecial(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnSecondarySpecialChanged(InputAction.CallbackContext context)
-        {
+        private void OnSecondarySpecialChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region TertiarySpecial
-        public void OnTertiarySpecial(InputAction.CallbackContext context)
-        {
+        public void OnTertiarySpecial(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnTertiarySpecialChanged(InputAction.CallbackContext context)
-        {
+        private void OnTertiarySpecialChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region Selection
-        public void OnSelection(InputAction.CallbackContext context)
-        {
+        public void OnSelection(InputAction.CallbackContext context) {
             throw new System.NotImplementedException();
         }
-        private void OnSelectionChanged(InputAction.CallbackContext context)
-        {
+        private void OnSelectionChanged(InputAction.CallbackContext context) {
 
         }
         #endregion
         #region Enable/Disable
-        private void OnDisable()
-        {
+        private void OnDisable() {
             _playerUnityInputAsset.Disable();
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() {
             _playerUnityInputAsset.Enable();
         }
         #endregion
@@ -227,5 +259,5 @@ namespace Game.CustomInput {
         //}
 
     }
-  
+
 }

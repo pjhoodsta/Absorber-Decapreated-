@@ -48,8 +48,13 @@ namespace Game.Systems {
         {
             var inputComponent = entity.GetComponent<StandardInputComponent>();
             //UnityInputWrapper input = inputComponent.UnityInputWrapper;
-            if (inputComponent.VelocityByMovement == Vector2.zero) return;
-            Debug.Log("getting input");
+            if (inputComponent.EntityState == EntityStates.Movement) {
+                if (inputComponent.MovementState == MovementStates.Walk)
+                    Debug.Log("Walking");
+                else if (inputComponent.MovementState == MovementStates.Run)
+                    Debug.Log("Running");
+            } else
+                Debug.Log("Idle");
         }
 
      

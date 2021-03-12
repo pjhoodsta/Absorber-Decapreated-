@@ -58,7 +58,7 @@ namespace Game.CustomInput
                     ""id"": ""a9995963-54e7-4c6c-917d-42dc31fb3835"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2),Hold,MultiTap""
                 },
                 {
                     ""name"": ""Defense"",
@@ -238,7 +238,7 @@ namespace Game.CustomInput
                     ""name"": ""2D Vector"",
                     ""id"": ""7f687c9d-69be-4cee-81fe-be3b3a5cf5f6"",
                     ""path"": ""2DVector"",
-                    ""interactions"": ""Tap,SlowTap,MultiTap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
@@ -293,7 +293,7 @@ namespace Game.CustomInput
                     ""name"": ""2D Vector"",
                     ""id"": ""735b5446-7a80-493d-9a20-8c378d215a7f"",
                     ""path"": ""2DVector"",
-                    ""interactions"": ""Tap,SlowTap,MultiTap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
@@ -348,7 +348,7 @@ namespace Game.CustomInput
                     ""name"": ""2D Vector"",
                     ""id"": ""40b1c56d-2486-4b5c-ad28-e4a43ce2cc79"",
                     ""path"": ""2DVector"",
-                    ""interactions"": ""Tap,SlowTap,MultiTap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
