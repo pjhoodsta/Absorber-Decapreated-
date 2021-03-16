@@ -7,7 +7,9 @@ using Game.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using EcsRx.Components;
 using EcsRx.Unity.MonoBehaviours;
+using UniRx;
 using Zenject;
 //I hope I can refactor DRY section later!
 
@@ -25,10 +27,11 @@ namespace Game.CustomInput {
         private InputAction _tertiarySpecial;
         private InputAction _selection;
 
-        StandardInputComponent _standardInputComponent;
+        public StandardInputComponent StandardInputComponent;
 
         [Inject]
-        public void Construct() {
+        public void Construct(StandardInputComponent standardInputComponent) {
+            StandardInputComponent = standardInputComponent;
             _playerUnityInputAsset = new PlayerUnityInputAsset();
 
             #region Movement
@@ -114,10 +117,12 @@ namespace Game.CustomInput {
 
 
         #region Movement
-        private Vector2 _velocityByMovement;
-        public Vector2 VelocityByMovement {
-            get { return _velocityByMovement; }
-        }
+        //private Vector2 _velocityByMovement;
+        //public Vector2 VelocityByMovement {
+        //    get { return _velocityByMovement; }
+        //}
+        public Vector2ReactiveProperty VelocityByMovement;
+
         private int _movementState;
         public int MovementState {
             get { return _movementState; }
@@ -145,7 +150,7 @@ namespace Game.CustomInput {
             }
         }
         private void OnMovementStarted(InputAction.CallbackContext context) {
-            _velocityByMovement = context.ReadValue<Vector2>();
+            StandardInputComponent.VelocityByMovement.Value = context.ReadValue<Vector2>();
             if (context.interaction is PressInteraction) {
                 if (_entityState == EntityStates.Idle)
                     _movementState = MovementStates.Walk;
@@ -156,7 +161,7 @@ namespace Game.CustomInput {
             if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
         }
         private void OnMovementPerformed(InputAction.CallbackContext context) {
-            _velocityByMovement = context.ReadValue<Vector2>();
+            StandardInputComponent.VelocityByMovement.Value = context.ReadValue<Vector2>();
             if (context.interaction is PressInteraction) {
                 if (_entityState == EntityStates.Idle)
                     _movementState = MovementStates.Walk;
@@ -167,7 +172,7 @@ namespace Game.CustomInput {
 
         }
         private void OnMovementCanceled(InputAction.CallbackContext context) {
-            _velocityByMovement = context.ReadValue<Vector2>();
+            StandardInputComponent.VelocityByMovement.Value = context.ReadValue<Vector2>();
             if (_entityState == EntityStates.Movement)
                 _entityState = EntityStates.Idle;
         }
@@ -254,9 +259,10 @@ namespace Game.CustomInput {
             _playerUnityInputAsset.Enable();
         }
         #endregion
-        //public class Factory : PlaceholderFactory<UnityInputWrapper>
-        //{
-        //}
+       
+        public class Factory : PlaceholderFactory<UnityInputHandler>
+        {
+        }
 
     }
 

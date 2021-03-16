@@ -68,8 +68,8 @@
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\MainThreadScheduler.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.Concurrency.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\ToArray.cs" />
-    <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Single.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableUpdateTrigger.cs" />
+    <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Single.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Timestamp.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\ObservableLogger.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Diagnostics\LogEntry.cs" />
@@ -88,8 +88,8 @@
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableSubmitTrigger.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Disposables\SingleAssignmentDisposable.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Observable.cs" />
-    <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\ToObservable.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\CancellationToken.cs" />
+    <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\ToObservable.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\System\IObservable.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableCanvasGroupChangedTrigger.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\CoroutineAsyncBridge.cs" />

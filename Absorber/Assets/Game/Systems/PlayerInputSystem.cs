@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using EcsRx.Attributes;
 using EcsRx.Collections;
@@ -24,13 +24,14 @@ using UnityEngine;
 
 namespace Game.Systems {
     [Priority(2)]
-    public class PlayerInputSystem : IReactToGroupSystem
+    public class PlayerInputSystem : IManualSystem
     {
         
         private readonly IEventSystem _eventSystem;
 
-        private IDisposable _updateSubscription;
+        private readonly IList<IDisposable> _subscriptions = new List<IDisposable>();
         private readonly IObservableGroup _inputAccessor;
+
 
         public IGroup Group { get; } = new Group(typeof(StandardInputComponent));
 
@@ -38,7 +39,14 @@ namespace Game.Systems {
         {
             return Observable.EveryUpdate().Select(x => group);
         }
-        
+        public void StartSystem(IObservableGroup group) {
+            this.WaitForScene().Subscribe(x => {
+                var input = group.First();
+               
+            }
+                );
+        }
+       
         public PlayerInputSystem( IEventSystem eventSystem, IObservableGroupManager observableGroupManager) {
             _eventSystem = eventSystem;
             _inputAccessor = observableGroupManager.GetObservableGroup(new Group(typeof(StandardInputComponent)));
@@ -48,16 +56,14 @@ namespace Game.Systems {
         {
             var inputComponent = entity.GetComponent<StandardInputComponent>();
             //UnityInputWrapper input = inputComponent.UnityInputWrapper;
-            if (inputComponent.EntityState == EntityStates.Movement) {
-                if (inputComponent.MovementState == MovementStates.Walk)
-                    Debug.Log("Walking");
-                else if (inputComponent.MovementState == MovementStates.Run)
-                    Debug.Log("Running");
-            } else
-                Debug.Log("Idle");
+           
         }
+        public void StopSystem(IObservableGroup group) { 
+            _subscriptions.DisposeAll(); 
+        }
+        
 
-     
+
 
     }
 
