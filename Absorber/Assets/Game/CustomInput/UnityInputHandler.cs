@@ -8,11 +8,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using EcsRx.Unity.MonoBehaviours;
+using UniRx;
 using Zenject;
 //I hope I can refactor DRY section later!
 
 namespace Game.CustomInput {
-    public class UnityInputHandler : MonoBehaviour, PlayerUnityInputAsset.IPlayer0GameplayActions {
+    public class UnityInputHandler : MonoBehaviour, PlayerUnityInputAsset.IPlayer0GameplayActions, IDisposable {
         private PlayerUnityInputAsset _playerUnityInputAsset;
         private InputAction _movement;
         private InputAction _primaryAttack;
@@ -25,18 +26,13 @@ namespace Game.CustomInput {
         private InputAction _tertiarySpecial;
         private InputAction _selection;
 
-        StandardInputComponent _standardInputComponent;
-
         [Inject]
         public void Construct() {
             _playerUnityInputAsset = new PlayerUnityInputAsset();
 
             #region Movement
             _movement = _playerUnityInputAsset.Player0Gameplay.Movement;
-            _movement.AddBinding("<Keyboard>/upArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
-            _movement.AddBinding("<Keyboard>/downArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
-            _movement.AddBinding("<Keyboard>/leftArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
-            _movement.AddBinding("<Keyboard>/rightArrow").WithInteraction("Press(behavior=2),Hold,MultiTap");
+           
             _movement.started += OnMovementStarted;
             //_movement.started += context => {
             //    if (context.interaction is MultiTapInteraction)
@@ -114,10 +110,9 @@ namespace Game.CustomInput {
 
 
         #region Movement
-        private Vector2 _velocityByMovement;
-        public Vector2 VelocityByMovement {
-            get { return _velocityByMovement; }
-        }
+        public Vector3ReactiveProperty VelocityByMovement = new Vector3ReactiveProperty();
+        private Vector3 _tempVelocity;
+
         private int _movementState;
         public int MovementState {
             get { return _movementState; }
@@ -145,31 +140,41 @@ namespace Game.CustomInput {
             }
         }
         private void OnMovementStarted(InputAction.CallbackContext context) {
-            _velocityByMovement = context.ReadValue<Vector2>();
-            if (context.interaction is PressInteraction) {
-                if (_entityState == EntityStates.Idle)
-                    _movementState = MovementStates.Walk;
-            }
-            else if (context.interaction is HoldInteraction) {
-                _movementState = MovementStates.Run;
-            }
-            if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
+            _tempVelocity.x = context.ReadValue<Vector2>().x;
+            _tempVelocity.y = context.ReadValue<Vector2>().y;
+
+            VelocityByMovement.Value = _tempVelocity;
+
+            //if (context.interaction is PressInteraction) {
+            //    if (_entityState == EntityStates.Idle)
+            //        _movementState = MovementStates.Walk;
+            //}
+            //else if (context.interaction is HoldInteraction) {
+            //    _movementState = MovementStates.Run;
+            //}
+            //if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
         }
         private void OnMovementPerformed(InputAction.CallbackContext context) {
-            _velocityByMovement = context.ReadValue<Vector2>();
-            if (context.interaction is PressInteraction) {
-                if (_entityState == EntityStates.Idle)
-                    _movementState = MovementStates.Walk;
-            } else if (context.interaction is HoldInteraction) {
-                _movementState = MovementStates.Run;
-            }
-            if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
+            _tempVelocity.x = context.ReadValue<Vector2>().x;
+            _tempVelocity.y = context.ReadValue<Vector2>().y;
+
+            VelocityByMovement.Value = _tempVelocity;
+            //if (context.interaction is PressInteraction) {
+            //    if (_entityState == EntityStates.Idle)
+            //        _movementState = MovementStates.Walk;
+            //} else if (context.interaction is HoldInteraction) {
+            //    _movementState = MovementStates.Run;
+            //}
+            //if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
 
         }
         private void OnMovementCanceled(InputAction.CallbackContext context) {
-            _velocityByMovement = context.ReadValue<Vector2>();
-            if (_entityState == EntityStates.Movement)
-                _entityState = EntityStates.Idle;
+            _tempVelocity.x = context.ReadValue<Vector2>().x;
+            _tempVelocity.y = context.ReadValue<Vector2>().y;
+
+            VelocityByMovement.Value = _tempVelocity;
+            //if (_entityState == EntityStates.Movement)
+            //    _entityState = EntityStates.Idle;
         }
         #endregion
 
@@ -254,6 +259,10 @@ namespace Game.CustomInput {
             _playerUnityInputAsset.Enable();
         }
         #endregion
+        public void Dispose() {
+            VelocityByMovement.Dispose();
+        }
+
         //public class Factory : PlaceholderFactory<UnityInputWrapper>
         //{
         //}

@@ -11,7 +11,7 @@
                     "id": "9e7eb1aa-0b54-43c7-aa26-5ced72c83405",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap,MultiTap"
+                    "interactions": ""
                 },
                 {
                     "name": "SecondaryAttack",
@@ -19,7 +19,7 @@
                     "id": "cea056b8-c5ec-443c-8c06-17e12ef24cb4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap,MultiTap"
+                    "interactions": ""
                 },
                 {
                     "name": "Jump",
@@ -27,7 +27,7 @@
                     "id": "478f5e8c-f5fb-404c-ab92-6aa1446b680f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap,MultiTap"
+                    "interactions": ""
                 },
                 {
                     "name": "Grab",
@@ -35,7 +35,7 @@
                     "id": "e6ca8b1b-888b-4933-9866-5d58b0367347",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap,MultiTap"
+                    "interactions": ""
                 },
                 {
                     "name": "Movement",
@@ -43,7 +43,7 @@
                     "id": "a9995963-54e7-4c6c-917d-42dc31fb3835",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Press(behavior=2),Hold,MultiTap"
+                    "interactions": "Tap,MultiTap,Hold"
                 },
                 {
                     "name": "Defense",
@@ -51,7 +51,7 @@
                     "id": "8905873a-2aa1-4dd1-a303-b0f5835b8be0",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap,MultiTap"
+                    "interactions": ""
                 },
                 {
                     "name": "PrimarySpecial",
@@ -59,7 +59,7 @@
                     "id": "72785548-7f73-43c3-b2a0-64a68cfb1d73",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap,MultiTap"
+                    "interactions": ""
                 },
                 {
                     "name": "SecondarySpecial",
@@ -83,7 +83,7 @@
                     "id": "a3a123d4-c129-418a-9f3c-1ac51f6d9f35",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "Hold,Tap,MultiTap"
+                    "interactions": ""
                 }
             ],
             "bindings": [

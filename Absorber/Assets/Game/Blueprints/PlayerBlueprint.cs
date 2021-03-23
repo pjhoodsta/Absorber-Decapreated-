@@ -12,19 +12,17 @@ using Zenject;
 namespace Game.Blueprints {
     [Priority(1)]
     public class PlayerBlueprint : IBlueprint {
-        private readonly UnityInputHandler _unityInputHandler;
 
-        public PlayerBlueprint(UnityInputHandler unityInputHandler)
+        public PlayerBlueprint()
         {
-            _unityInputHandler = unityInputHandler;
+            
         }
 
         public void Apply(IEntity entity) {
-            var standardInputComponent = new StandardInputComponent(_unityInputHandler);
+            //var standardInputComponent = new StandardInputComponent(_unityInputHandler);
             //standardInputComponent.UnityInputWrapper = _unityInputWrapper;
 
             entity.AddComponents(
-                standardInputComponent,
                 new PlayerControlledComponent(), 
                 new ViewComponent(), 
                 new CameraFollowsComponent(), 

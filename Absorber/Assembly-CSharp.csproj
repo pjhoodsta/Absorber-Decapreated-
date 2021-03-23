@@ -72,7 +72,6 @@
     <Compile Include="Assets\EcsRx.Examples\RandomReactions\Components\RandomColorComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\ManualSystems\Systems\ConstantOutputSystem.cs" />
-    <Compile Include="Assets\Game\Configuration\InputMapConfiguration.cs" />
     <Compile Include="Assets\EcsRx.Examples\GameObjectBinding\Components\CubeComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\PluginExample\HelloWorldPlugin\HelloWorldPlugin.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.2\Simple Demo\SimpleControls.cs" />
@@ -88,7 +87,8 @@
     <Compile Include="Assets\EcsRx.Examples\ManuallyRegisterSystems\Systems\RandomMovementSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\ViewResolvers\SphereViewResolver.cs" />
     <Compile Include="Assets\Game\Enums\EntityStates\IdleStates.cs" />
-    <Compile Include="Assets\Game\CustomInput\InputSettingInstaller.cs" />
+    <Compile Include="Assets\Game\Configurations\InputSettingInstaller.cs" />
+    <Compile Include="Assets\Game\Systems\UnityInputSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Components\CameraFollows.cs" />
     <Compile Include="Assets\EcsRx.Examples\GameObjectBinding\ViewResolvers\CubeViewResolver.cs" />
     <Compile Include="Assets\EcsRx.Examples\PooledViews\Components\SelfDestructComponent.cs" />
@@ -99,7 +99,6 @@
     <Compile Include="Assets\Game\Enums\EntityStates\EntityStates.cs" />
     <Compile Include="Assets\Game\Modules\CustomInputModule.cs" />
     <Compile Include="Assets\Game\Application.cs" />
-    <Compile Include="Assets\Game\Systems\LogUpdateSystem.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\DrawKeyAsPropertyAttribute.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Application.cs" />
     <Compile Include="Assets\EcsRx\Unity\Extensions\GameObjectExtensions.cs" />
@@ -109,6 +108,7 @@
     <Compile Include="Assets\EcsRx.Examples\RandomReactions\Systems\ColorChangingSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\GameObjectLinking\Systems\CameraFollowSystem.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\Example\NestedDB.cs" />
+    <Compile Include="Assets\Game\Components\LogComponent.cs" />
     <Compile Include="Assets\Game\Components\AnimatorComponent.cs" />
     <Compile Include="Assets\EcsRx\Unity\Systems\PrefabViewResolverSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\Components\CubeComponent.cs" />
@@ -117,7 +117,6 @@
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Assets\EcsRx\Unity\Extensions\IEntityExtensions.cs" />
     <Compile Include="Assets\EcsRx\Zenject\Extensions\IZenjectExtensions.cs" />
-    <Compile Include="Assets\Game\CustomInput\PlayerInputContainer.cs" />
     <Compile Include="Assets\EcsRx\Unity\Extensions\ISystemExtensions.cs" />
     <Compile Include="Assets\EcsRx\UnityEditor\JSON.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.2\Custom Binding Composite\CustomComposite.cs" />
@@ -140,10 +139,8 @@
     <Compile Include="Assets\Samples\Input System\1.0.2\Simple Demo\SimpleController_UsingPlayerInput.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\ViewResolvers\CubeViewResolver.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Groups\PlayerGroup.cs" />
-    <Compile Include="Assets\Game\Systems\test.cs" />
     <Compile Include="Assets\Game\CustomInput\InputBuffer.cs" />
     <Compile Include="Assets\Game\Components\StandardInputComponent.cs" />
-    <Compile Include="Assets\Game\CustomInput\PlayerUnityInputAsset.cs" />
     <Compile Include="Assets\Game\Systems\CameraFollowSystem.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\IDAttribute.cs" />
     <Compile Include="Assets\EcsRx.Examples\CustomGameObjectHandling\Application.cs" />
@@ -159,7 +156,6 @@
     <Compile Include="Assets\Game\Components\CameraFollowsComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\CustomGameObjectHandling\Systems\CameraFollowSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Components\HasName.cs" />
-    <Compile Include="Assets\Game\Systems\PlayerInputSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\CustomGameObjectHandling\Components\CameraFollows.cs" />
     <Compile Include="Assets\EcsRx.Examples\GameObjectBinding\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Components\WithHealthComponent.cs" />
@@ -172,19 +168,21 @@
     <Compile Include="Assets\EcsRx.Examples\PooledViews\Components\SpawnerComponent.cs" />
     <Compile Include="Assets\Game\CharacterStates\EntityState.cs" />
     <Compile Include="Assets\EcsRx\UnityEditor\MonoBehaviours\RegisterAsEntity.cs" />
+    <Compile Include="Assets\Game\Systems\LogUpdateSystem.cs" />
     <Compile Include="Assets\EcsRx\UnityEditor\MonoBehaviours\ActiveSystemsViewer.cs" />
     <Compile Include="Assets\Game\CustomInput\ButtonStates.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Systems\PlayerControlSystem.cs" />
-    <Compile Include="Assets\Game\Systems\Test02.cs" />
     <Compile Include="Assets\EcsRx\Unity\Systems\DynamicViewResolverSystem.cs" />
     <Compile Include="Assets\EcsRx\Unity\UnityEcsRxApplicationBehaviour.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Systems\PlayerReportingSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\PluginExample\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\Components\SphereComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\Components\TestComponent.cs" />
+    <Compile Include="Assets\Game\Blueprints\LogBlueprint.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Components\PlayerControlledComponent.cs" />
     <Compile Include="Assets\EcsRx\Unity\Scheduling\UnityUpdateScheduler.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Systems\CameraFollowSystem.cs" />
+    <Compile Include="Assets\Game\CustomInput\PlayerUnityInputController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ScriptTemplates\80-EcsRx__Event__Event-Event.cs.txt" />
