@@ -17,6 +17,7 @@ using Zenject;
 namespace Game {
     public class Application : EcsRxApplicationBehaviour {
         private IEntityCollection defaultCollection;
+        
 
 
         protected override void LoadModules() {
@@ -29,7 +30,10 @@ namespace Game {
         protected override void ApplicationStarted() {
             defaultCollection = EntityDatabase.GetCollection();
             var player = defaultCollection.CreateEntity(new PlayerBlueprint());
+<<<<<<< HEAD
             var log = defaultCollection.CreateEntity(new LogBlueprint());
+=======
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
 
 
         }

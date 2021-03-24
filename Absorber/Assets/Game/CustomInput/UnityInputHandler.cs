@@ -7,6 +7,7 @@ using Game.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using EcsRx.Components;
 using EcsRx.Unity.MonoBehaviours;
 using UniRx;
 using Zenject;
@@ -26,8 +27,14 @@ namespace Game.CustomInput {
         private InputAction _tertiarySpecial;
         private InputAction _selection;
 
+<<<<<<< HEAD
+=======
+        public StandardInputComponent StandardInputComponent;
+
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
         [Inject]
-        public void Construct() {
+        public void Construct(StandardInputComponent standardInputComponent) {
+            StandardInputComponent = standardInputComponent;
             _playerUnityInputAsset = new PlayerUnityInputAsset();
 
             #region Movement
@@ -110,8 +117,16 @@ namespace Game.CustomInput {
 
 
         #region Movement
+<<<<<<< HEAD
         public Vector3ReactiveProperty VelocityByMovement = new Vector3ReactiveProperty();
         private Vector3 _tempVelocity;
+=======
+        //private Vector2 _velocityByMovement;
+        //public Vector2 VelocityByMovement {
+        //    get { return _velocityByMovement; }
+        //}
+        public Vector2ReactiveProperty VelocityByMovement;
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
 
         private int _movementState;
         public int MovementState {
@@ -140,6 +155,7 @@ namespace Game.CustomInput {
             }
         }
         private void OnMovementStarted(InputAction.CallbackContext context) {
+<<<<<<< HEAD
             _tempVelocity.x = context.ReadValue<Vector2>().x;
             _tempVelocity.y = context.ReadValue<Vector2>().y;
 
@@ -175,6 +191,33 @@ namespace Game.CustomInput {
             VelocityByMovement.Value = _tempVelocity;
             //if (_entityState == EntityStates.Movement)
             //    _entityState = EntityStates.Idle;
+=======
+            StandardInputComponent.VelocityByMovement.Value = context.ReadValue<Vector2>();
+            if (context.interaction is PressInteraction) {
+                if (_entityState == EntityStates.Idle)
+                    _movementState = MovementStates.Walk;
+            }
+            else if (context.interaction is HoldInteraction) {
+                _movementState = MovementStates.Run;
+            }
+            if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
+        }
+        private void OnMovementPerformed(InputAction.CallbackContext context) {
+            StandardInputComponent.VelocityByMovement.Value = context.ReadValue<Vector2>();
+            if (context.interaction is PressInteraction) {
+                if (_entityState == EntityStates.Idle)
+                    _movementState = MovementStates.Walk;
+            } else if (context.interaction is HoldInteraction) {
+                _movementState = MovementStates.Run;
+            }
+            if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
+
+        }
+        private void OnMovementCanceled(InputAction.CallbackContext context) {
+            StandardInputComponent.VelocityByMovement.Value = context.ReadValue<Vector2>();
+            if (_entityState == EntityStates.Movement)
+                _entityState = EntityStates.Idle;
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
         }
         #endregion
 
@@ -259,6 +302,7 @@ namespace Game.CustomInput {
             _playerUnityInputAsset.Enable();
         }
         #endregion
+<<<<<<< HEAD
         public void Dispose() {
             VelocityByMovement.Dispose();
         }
@@ -266,6 +310,12 @@ namespace Game.CustomInput {
         //public class Factory : PlaceholderFactory<UnityInputWrapper>
         //{
         //}
+=======
+       
+        public class Factory : PlaceholderFactory<UnityInputHandler>
+        {
+        }
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
 
     }
 
