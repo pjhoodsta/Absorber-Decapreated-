@@ -14,6 +14,7 @@ namespace Game.Components
 
     public class StandardInputComponent : IComponent
     {
+<<<<<<< HEAD
         
         //private Vector2ReactiveProperty _velocityByMovement;
         //public Vector2ReactiveProperty VelocityByMovement
@@ -23,6 +24,10 @@ namespace Game.Components
         //    }
         //}
        
+=======
+        public Vector2ReactiveProperty VelocityByMovement;
+      
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
         public StandardInputComponent()
         {
             

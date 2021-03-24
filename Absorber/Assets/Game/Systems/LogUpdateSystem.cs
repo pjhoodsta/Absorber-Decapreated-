@@ -5,6 +5,7 @@ using EcsRx.Events;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Groups.Observable;
+using EcsRx.Plugins.ReactiveSystems.Systems;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
 using Game.Components;
@@ -43,10 +44,23 @@ namespace Game.Systems
            
         }
         private void SetupSubscriptions() {
+<<<<<<< HEAD
             _movementComponent.Velocity.DistinctUntilChanged()
                 .Subscribe(velocityNumber => _velocityText.text = $"Velocity {_movementComponent.Velocity.Value} .")
                 .AddTo(_subscriptions);
 
+=======
+            _inputComponent.VelocityByMovement.DistinctUntilChanged(x => _inputComponent.VelocityByMovement.Value != Vector2.zero)
+                .Subscribe(x => _velocityText.text = _inputComponent.VelocityByMovement.Value.ToString())
+                .AddTo(_subscriptions);
+            //if (inputComponent.EntityState == EntityStates.Movement) {
+            //    if (inputComponent.MovementState == MovementStates.Walk)
+            //        Debug.Log("Walking");
+            //    else if (inputComponent.MovementState == MovementStates.Run)
+            //        Debug.Log("Running");
+            //} else
+            //    Debug.Log("Idle");
+>>>>>>> 360c0ddab0ea31d3baa9ea4829d4f93dcc515d1f
         }
         public void StopSystem(IObservableGroup group)
         { _subscriptions.DisposeAll(); }
