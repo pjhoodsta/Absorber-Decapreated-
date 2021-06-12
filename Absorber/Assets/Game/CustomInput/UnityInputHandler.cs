@@ -126,55 +126,25 @@ namespace Game.CustomInput {
         public void OnMovement(InputAction.CallbackContext context) {
             //throw new System.NotImplementedException();
         }
-        private void OnMovementStartedWalking(InputAction.CallbackContext context) {
-            if (_entityState == EntityStates.Idle) {
-                _movementState = MovementStates.Walk;
-                _entityState = EntityStates.Movement;
-            }
-               
-        }
-        private void OnMovementStartedRunning(InputAction.CallbackContext context) {
-            if (_entityState == EntityStates.Idle) {
-                _movementState = MovementStates.Run;
-                _entityState = EntityStates.Movement;
-            }
-        }
+      
         private void OnMovementStarted(InputAction.CallbackContext context) {
             _tempVelocity.x = context.ReadValue<Vector2>().x;
             _tempVelocity.y = context.ReadValue<Vector2>().y;
 
             VelocityByMovement.Value = _tempVelocity;
-
-            //if (context.interaction is PressInteraction) {
-            //    if (_entityState == EntityStates.Idle)
-            //        _movementState = MovementStates.Walk;
-            //}
-            //else if (context.interaction is HoldInteraction) {
-            //    _movementState = MovementStates.Run;
-            //}
-            //if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
         }
         private void OnMovementPerformed(InputAction.CallbackContext context) {
             _tempVelocity.x = context.ReadValue<Vector2>().x;
             _tempVelocity.y = context.ReadValue<Vector2>().y;
 
             VelocityByMovement.Value = _tempVelocity;
-            //if (context.interaction is PressInteraction) {
-            //    if (_entityState == EntityStates.Idle)
-            //        _movementState = MovementStates.Walk;
-            //} else if (context.interaction is HoldInteraction) {
-            //    _movementState = MovementStates.Run;
-            //}
-            //if (_entityState == EntityStates.Idle) _entityState = EntityStates.Movement;
-
         }
         private void OnMovementCanceled(InputAction.CallbackContext context) {
             _tempVelocity.x = context.ReadValue<Vector2>().x;
             _tempVelocity.y = context.ReadValue<Vector2>().y;
 
             VelocityByMovement.Value = _tempVelocity;
-            //if (_entityState == EntityStates.Movement)
-            //    _entityState = EntityStates.Idle;
+      
         }
         #endregion
 
