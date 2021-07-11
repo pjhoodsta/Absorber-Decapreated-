@@ -11,17 +11,20 @@ namespace Game.Components {
         public FloatReactiveProperty CurrentDistance { get; set; }
         public Vector3ReactiveProperty Velocity { get; set; }
         public float MaxDistance { get; set; }
-       
+        public BoolReactiveProperty IsMoving { get; set; }
+
         public MovementComponent() {
             CurrentDistance = new FloatReactiveProperty();
             Velocity = new Vector3ReactiveProperty();
             StopMovement = false;
             MaxDistance = 0f;
+            IsMoving = new BoolReactiveProperty();
            
         }
         public void Dispose() {
             CurrentDistance.Dispose();
             Velocity.Dispose();
+            IsMoving.Dispose();
         }
   
 

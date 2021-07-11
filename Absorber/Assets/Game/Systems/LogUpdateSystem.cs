@@ -19,7 +19,8 @@ namespace Game.Systems
     public class LogUpdateSystem : IManualSystem
     {
         public IGroup Group { get; } = new Group(typeof(PlayerControlledComponent), typeof(MovementComponent));
-        private Text _velocityText;
+        private Text _isMovementText;
+        private Text _movementVelocityText;
         private LogComponent _logComponent;
         private PlayerControlledComponent _playerControlledComponent;
         private MovementComponent _movementComponent;
@@ -37,14 +38,18 @@ namespace Game.Systems
                 .Subscribe(x => {
                     var player = group.First();
                     _movementComponent = player.GetComponent<MovementComponent>();
-                    _velocityText = GameObject.Find("VelocityText").GetComponent<Text>();
+                    _movementVelocityText = GameObject.Find("MovementVelocity").GetComponent<Text>();
+                    _isMovementText = GameObject.Find("IsMovement").GetComponent<Text>();
                     SetupSubscriptions();
                 });
            
         }
         private void SetupSubscriptions() {
             _movementComponent.Velocity.DistinctUntilChanged()
-                .Subscribe(velocityNumber => _velocityText.text = $"Velocity {_movementComponent.Velocity.Value} .")
+                .Subscribe(velocityNumber => _movementVelocityText.text = $"Velocity {_movementComponent.Velocity.Value} .")
+                .AddTo(_subscriptions);
+            _movementComponent.Velocity.DistinctUntilChanged()
+                .Subscribe(movementChecker => _isMovementText.text = $"Is Moving {_movementComponent.IsMoving.Value} .")
                 .AddTo(_subscriptions);
 
         }

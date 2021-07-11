@@ -40,6 +40,10 @@ namespace Game.Systems {
                   .Select(x => _unityInputHandler.VelocityByMovement.DistinctUntilChanged())
                   .Subscribe(x => _movementComponent.Velocity.Value = _unityInputHandler.VelocityByMovement.Value)
                     .AddTo(_subscriptions);
+                Observable.EveryUpdate()
+                  .Select(x => _unityInputHandler.IsMoving.DistinctUntilChanged())
+                  .Subscribe(x => _movementComponent.IsMoving.Value = _unityInputHandler.IsMoving.Value)
+                    .AddTo(_subscriptions);
             }
                 );
         }
