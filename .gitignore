@@ -6,6 +6,15 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
+Absorber/[Ll]ibrary/
+Absorber//[Tt]emp/
+Absorber//[Oo]bj/
+Absorber//[Bb]uild/
+Absorber//[Bb]uilds/
+Absorber//[Ll]ogs/
+Absorber//[Uu]ser[Ss]ettings/
+
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -1843,3 +1852,4 @@ Absorber/Zenject-ReflectionBaking-Editor.csproj
 Absorber/Zenject-TestFramework.csproj
 Absorber/Zenject-UnitTests-Editor.csproj
 Absorber/Zenject.csproj
+Absorber/UserSettings/EditorUserSettings.asset
