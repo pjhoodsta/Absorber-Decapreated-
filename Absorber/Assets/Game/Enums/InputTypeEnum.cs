@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Game.Enums {
+    //Delete soon
    public static class InputTypeEnums {
         public static int PrimaryAttack = 0;
         public static int SecondaryAttack = 1;
