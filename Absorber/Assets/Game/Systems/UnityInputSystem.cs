@@ -9,7 +9,6 @@ using EcsRx.Groups.Observable;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
 using Game.Components;
-using Game.Groups;
 using Game.CustomInput;
 using Zenject;
 using UnityEngine;
@@ -18,7 +17,7 @@ using UnityEngine.UI;
 
 namespace Game.Systems {
     public class UnityInputSystem : IManualSystem {
-        public IGroup Group => new PlayerGroup();
+        public IGroup Group { get; } = new Group(typeof(PlayerControlledComponent), typeof(MovementComponent));
         //private StandardInputComponent _inputComponent;
         [Inject]
         private UnityInputHandler _unityInputHandler;

@@ -50,13 +50,16 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.11</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.9</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.1.14f1</UnityVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Reference Include="Microsoft.CSharp">
       <HintPath>D:\Unity\UnityEditor\2021.1.14f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Microsoft.CSharp.dll</HintPath>
     </Reference>
@@ -79,12 +82,14 @@
     <Compile Include="Assets\EcsRx\Unity\Extensions\ViewComponentExtensions.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.2\Simple Demo\SimpleController_UsingActions.cs" />
     <Compile Include="Assets\Game\ViewResolvers\PlayerViewResolver.cs" />
+    <Compile Include="Assets\Game\CharacterStates\IStateHandler.cs" />
     <Compile Include="Assets\EcsRx.Examples\GameObjectBinding\ViewResolvers\SphereViewResolver.cs" />
     <Compile Include="Assets\Game\Blueprints\PlayerBlueprint.cs" />
     <Compile Include="Assets\Game\CustomInput\UnityInputHandler.cs" />
     <Compile Include="Assets\EcsRx.Examples\ManualSystems\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\ManuallyRegisterSystems\Systems\RandomMovementSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\SceneFirstSetup\ViewResolvers\SphereViewResolver.cs" />
+    <Compile Include="Assets\Game\Enums\EntityStates\IdleStates.cs" />
     <Compile Include="Assets\Game\Configurations\InputSettingInstaller.cs" />
     <Compile Include="Assets\Game\Systems\UnityInputSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Components\CameraFollows.cs" />
@@ -95,11 +100,13 @@
     <Compile Include="Assets\EcsRx.Examples\CustomGameObjectHandling\Systems\CustomViewSetupSystem.cs" />
     <Compile Include="Assets\EcsRx\Unity\Dependencies\IUnityInstantiator.cs" />
     <Compile Include="Assets\EcsRx\Zenject\Installers\AutoBindSystemsInstaller.cs" />
+    <Compile Include="Assets\Game\Enums\EntityStates\EntityStates.cs" />
     <Compile Include="Assets\Game\Modules\CustomInputModule.cs" />
     <Compile Include="Assets\Game\Application.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\DrawKeyAsPropertyAttribute.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Application.cs" />
     <Compile Include="Assets\EcsRx\Unity\Extensions\GameObjectExtensions.cs" />
+    <Compile Include="Assets\Game\CharacterStates\MovementState.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\PooledViews\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\RandomReactions\Systems\ColorChangingSystem.cs" />
@@ -122,7 +129,6 @@
     <Compile Include="Assets\EcsRx.Examples\PooledViews\Systems\SpawnSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\PooledViews\Systems\SelfDestructionSystem.cs" />
     <Compile Include="Assets\EcsRx.Examples\RandomReactions\Application.cs" />
-    <Compile Include="Assets\Game\Groups\PlayerGroup.cs" />
     <Compile Include="Assets\EcsRx\Zenject\Dependencies\ZenjectDependencyContainer.cs" />
     <Compile Include="Assets\Game\Components\PlayerControlledComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\ManuallyRegisterSystems\Application.cs" />
@@ -131,6 +137,7 @@
     <Compile Include="Assets\EcsRx\Unity\Handlers\PrefabViewHandler.cs" />
     <Compile Include="Assets\Game\CustomInput\InputPrefabInstaller.cs" />
     <Compile Include="Assets\EcsRx\Unity\Modules\UnityOverrideModule.cs" />
+    <Compile Include="Assets\Game\Enums\EntityStates\MovementStates.cs" />
     <Compile Include="Assets\Game\Components\MovementComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\CustomGameObjectHandling\Components\PlayerControlledComponent.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.2\Simple Demo\SimpleController_UsingPlayerInput.cs" />
@@ -143,6 +150,7 @@
     <Compile Include="Assets\EcsRx.Examples\CustomGameObjectHandling\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\GameObjectLinking\Application.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\ReorderableList\ReorderableList.cs" />
+    <Compile Include="Assets\Game\Enums\GeneralEnums.cs" />
     <Compile Include="Assets\EcsRx\Unity\Extensions\IUnityInstantiatorExtensions.cs" />
     <Compile Include="Assets\EcsRx\UnityEditor\MonoBehaviours\EntityDatabaseViewer.cs" />
     <Compile Include="Assets\EcsRx.Examples\RandomReactions\Systems\CubeColourChangerSystem.cs" />
@@ -156,14 +164,17 @@
     <Compile Include="Assets\EcsRx.Examples\GameObjectBinding\Application.cs" />
     <Compile Include="Assets\EcsRx.Examples\UsingBlueprints\Components\WithHealthComponent.cs" />
     <Compile Include="Assets\EcsRx.Examples\ManuallyRegisterSystems\Systems\DefaultViewResolver.cs" />
+    <Compile Include="Assets\Game\CharacterStates\IdleState.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.2\Simple Demo\SimpleController_UsingState.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\SerializableDictionaryBase.cs" />
     <Compile Include="Assets\Rotary Heart\SerializableDictionaryLite\References\RequiredReferences.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\ViewResolvers\DefaultViewResolver.cs" />
     <Compile Include="Assets\EcsRx.Examples\PooledViews\Components\SpawnerComponent.cs" />
+    <Compile Include="Assets\Game\CharacterStates\EntityState.cs" />
     <Compile Include="Assets\EcsRx\UnityEditor\MonoBehaviours\RegisterAsEntity.cs" />
     <Compile Include="Assets\Game\Systems\LogUpdateSystem.cs" />
     <Compile Include="Assets\EcsRx\UnityEditor\MonoBehaviours\ActiveSystemsViewer.cs" />
+    <Compile Include="Assets\Game\CustomInput\ButtonStates.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Systems\PlayerControlSystem.cs" />
     <Compile Include="Assets\EcsRx\Unity\Systems\DynamicViewResolverSystem.cs" />
     <Compile Include="Assets\EcsRx\Unity\UnityEcsRxApplicationBehaviour.cs" />
@@ -175,9 +186,6 @@
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Components\PlayerControlledComponent.cs" />
     <Compile Include="Assets\EcsRx\Unity\Scheduling\UnityUpdateScheduler.cs" />
     <Compile Include="Assets\EcsRx.Examples\SimpleMovement\Systems\CameraFollowSystem.cs" />
-    <Compile Include="Assets\Game\Components\CustomViewComponent.cs" />
-    <Compile Include="Assets\Game\Extentions\ViewRosovlerExtention.cs" />
-    <Compile Include="Assets\Game\Enums\EntityStates\EntityState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ScriptTemplates\80-EcsRx__Event__Event-Event.cs.txt" />

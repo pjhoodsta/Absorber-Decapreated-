@@ -8,7 +8,6 @@ using EcsRx.Groups.Observable;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
 using Game.Components;
-using Game.Groups;
 //using Game.Events;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +18,7 @@ namespace Game.Systems
 {
     public class LogUpdateSystem : IManualSystem
     {
-        public IGroup Group => new PlayerGroup();
+        public IGroup Group { get; } = new Group(typeof(PlayerControlledComponent), typeof(MovementComponent));
         private Text _velocityText;
         private LogComponent _logComponent;
         private PlayerControlledComponent _playerControlledComponent;
