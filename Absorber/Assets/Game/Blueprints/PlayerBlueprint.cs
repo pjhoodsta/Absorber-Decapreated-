@@ -28,7 +28,8 @@ namespace Game.Blueprints {
                 new CameraFollowsComponent(), 
                 new MovementComponent(), 
                 new AnimatorComponent(),  
-                new CharacterStateComponent()
+                new CharacterStateComponent(EntityState.Idle ),
+                new CustomViewComponent()
                 
                 );
         }

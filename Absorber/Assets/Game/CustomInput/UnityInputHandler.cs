@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Enums;
-using Game.CharacterStates;
 using Game.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -127,17 +126,11 @@ namespace Game.CustomInput {
             //throw new System.NotImplementedException();
         }
         private void OnMovementStartedWalking(InputAction.CallbackContext context) {
-            if (_entityState == EntityStates.Idle) {
-                _movementState = MovementStates.Walk;
-                _entityState = EntityStates.Movement;
-            }
+        //
                
         }
         private void OnMovementStartedRunning(InputAction.CallbackContext context) {
-            if (_entityState == EntityStates.Idle) {
-                _movementState = MovementStates.Run;
-                _entityState = EntityStates.Movement;
-            }
+           //
         }
         private void OnMovementStarted(InputAction.CallbackContext context) {
             _tempVelocity.x = context.ReadValue<Vector2>().x;
